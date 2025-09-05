@@ -1,0 +1,131 @@
+.container {
+    padding: 1rem;
+}
+
+.expense-form {
+    max-width: 550px;
+    margin: 2rem auto;
+    padding: 2.5rem;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem; /* Creates space between form fields */
+}
+
+h2 {
+    text-align: center;
+    color: #2c3e50; /* A dark, soft blue */
+    margin: 0 0 1rem 0; /* Resets default margin and adds space below */
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+.form-field {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #34495e; /* A slightly lighter shade than the heading */
+}
+
+input[type="text"],
+input[type="number"],
+input[type="date"],
+select {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: 1px solid #bdc3c7; /* Light grey border */
+    border-radius: 6px;
+    font-size: 1rem;
+    color: #2c3e50;
+    background-color: #fff;
+    box-sizing: border-box; /* Ensures padding doesn't expand the element's width */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    -webkit-appearance: none; /* Removes default OS styling */
+    -moz-appearance: none;
+    appearance: none;
+}
+
+input:focus,
+select:focus {
+    outline: none;
+    border-color: #3498db; /* A bright blue */
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+}
+
+.error {
+    color: #e74c3c; /* A strong red for errors */
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+    font-weight: 500;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end; /* Aligns buttons to the right */
+    gap: 1rem; /* Space between buttons */
+    margin-top: 1rem;
+}
+
+/* --- General Button Styling --- */
+button {
+    padding: 0.8rem 1.75rem;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+button:not(:disabled):hover {
+    transform: translateY(-2px); /* Slight lift effect on hover */
+}
+
+.btn-primary {
+    background-color: #27ae60; /* A pleasant green */
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #229954;
+}
+
+.btn-primary:disabled {
+    background-color: #a3e9a4;
+    cursor: not-allowed;
+}
+
+.btn-secondary {
+    background-color: #f1f3f5; /* Light grey */
+    color: #343a40;
+    border: 1px solid #dee2e6;
+}
+
+.btn-secondary:hover {
+    background-color: #e9ecef;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.spinner {
+    width: 18px;
+    height: 18px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-top-color: #ffffff;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-right: 0.75rem;
+}
