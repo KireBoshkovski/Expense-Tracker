@@ -12,7 +12,7 @@ app.use(
   })
 );
 
-app.use("/api/auth", authRoutes);
+app.use("/auth", authRoutes);
 
 connectDB();
 

@@ -6,4 +6,5 @@ COPY tsconfig.json ./
 RUN npm install
 COPY src/ ./src/
 RUN npm run build && npm prune --production
+EXPOSE 5000
 CMD ["node", "dist/server.js"]
