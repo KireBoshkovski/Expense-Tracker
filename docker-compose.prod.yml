@@ -12,7 +12,7 @@ services:
       - network
 
   authentication:
-    build: ./authentication
+    image: kireboshkovski/authentication:latest
     restart: unless-stopped
     environment:
       MONGO_URI: ${AUTH_MONGO_URI}
@@ -24,7 +24,7 @@ services:
       - network
 
   backend:
-    build: ./backend
+    image: kireboshkovski/backend:latest
     restart: unless-stopped
     environment:
       MONGO_URI: ${BACKEND_MONGO_URI}
@@ -35,13 +35,13 @@ services:
       - network
 
   frontend:
-    build: ./frontend
+    image: kireboshkovski/frontend:latest
     restart: unless-stopped
     environment:
       API_BACKEND: ${BACKEND_API_URL}
       API_AUTH: ${AUTH_API_URL}
     ports:
-      - 4200:80 # maps 4200 on localhost to container port 80 from frontend service 
+      - 4200:80 
     depends_on:
       - backend
       - authentication
