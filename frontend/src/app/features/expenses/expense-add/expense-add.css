@@ -45,7 +45,9 @@ select {
     color: #2c3e50;
     background-color: #fff;
     box-sizing: border-box; /* Ensures padding doesn't expand the element's width */
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    transition:
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
     -webkit-appearance: none; /* Removes default OS styling */
     -moz-appearance: none;
     appearance: none;
@@ -80,7 +82,9 @@ button {
     font-size: 1rem;
     font-weight: 600;
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+    transition:
+        background-color 0.3s ease,
+        transform 0.2s ease;
     display: inline-flex;
     align-items: center;
     justify-content: center;

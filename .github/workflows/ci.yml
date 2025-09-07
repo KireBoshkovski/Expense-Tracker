@@ -2,9 +2,9 @@ name: Build & Push To DockerHub
 
 on:
   push:
-    branches: [ "master" ]
+    branches: ["master"]
   pull_request:
-    branches: [ "master" ]
+    branches: ["master"]
   workflow_dispatch:
 
 jobs:
@@ -34,7 +34,7 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-    
+
       - name: Log in to DockerHub
         uses: docker/login-action@v3.5.0
         with:
@@ -47,8 +47,8 @@ jobs:
       - name: Build and Push ${{ matrix.service }}
         uses: docker/build-push-action@v6
         with:
-          context: ./${{ matrix.service }}    # folder to build
-          push: true                          # push to DockerHub
+          context: ./${{ matrix.service }} # folder to build
+          push: true # push to DockerHub
           tags: |
             ${{ secrets.DOCKERHUB_USERNAME }}/${{ matrix.service }}:latest
             ${{ secrets.DOCKERHUB_USERNAME }}/${{ matrix.service }}:${{ github.sha }}

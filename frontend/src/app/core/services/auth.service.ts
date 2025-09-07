@@ -24,7 +24,7 @@ export class AuthService {
             .pipe(
                 tap((tokens) => {
                     this.setTokens(tokens);
-                })
+                }),
             );
     }
 
@@ -47,12 +47,12 @@ export class AuthService {
                 `${this.config.apiAuth}/refresh-token`,
                 {
                     refreshToken: this.getRefreshToken(),
-                }
+                },
             )
             .pipe(
                 tap((res) => {
                     localStorage.setItem('accessToken', res.accessToken);
-                })
+                }),
             );
     }
 
@@ -64,7 +64,7 @@ export class AuthService {
     register(
         username: string,
         email: string,
-        password: string
+        password: string,
     ): Observable<any> {
         return this.http.post(`${this.config.apiAuth}/register`, {
             username,

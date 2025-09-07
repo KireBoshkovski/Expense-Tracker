@@ -3,36 +3,45 @@
     <h2>Your Expenses</h2>
 
     @if (loading) {
-    <div>Loading...</div>
-    } @if(errorMessage) {
-    <div class="error">{{ errorMessage }}</div>
-    } @if (!loading && expenses.length > 0) {
-    <table>
-        <thead>
-            <tr>
-                <th>Title</th>
-                <th>Amount</th>
-                <th>Category</th>
-                <th>Date</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-    @for (expense of expenses; track expense._id) {
-        <tr>
-            <td>{{ expense.title }}</td>
-            <td>{{ expense.amount }}</td>
-            <td>{{ expense.category }}</td>
-            <td>{{ expense.date | date : "dd-MM-yyyy" }}</td>
-            <td>
-                <button [routerLink]="['/expenses/edit', expense._id]">Edit</button>
-                <button (click)="onDelete(expense._id!)">Delete</button>
-            </td>
-        </tr>
+        <div>Loading...</div>
     }
-</tbody>
-    </table>
-    } @if(!loading && expenses.length === 0) {
-    <div>No expenses found. <a routerLink="/expenses/add">Add one</a></div>
+    @if (errorMessage) {
+        <div class="error">{{ errorMessage }}</div>
+    }
+    @if (!loading && expenses.length > 0) {
+        <table>
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Amount</th>
+                    <th>Category</th>
+                    <th>Date</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (expense of expenses; track expense._id) {
+                    <tr>
+                        <td>{{ expense.title }}</td>
+                        <td>{{ expense.amount }}</td>
+                        <td>{{ expense.category }}</td>
+                        <td>{{ expense.date | date: "dd-MM-yyyy" }}</td>
+                        <td>
+                            <button
+                                [routerLink]="['/expenses/edit', expense._id]"
+                            >
+                                Edit
+                            </button>
+                            <button (click)="onDelete(expense._id!)">
+                                Delete
+                            </button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    @if (!loading && expenses.length === 0) {
+        <div>No expenses found. <a routerLink="/expenses/add">Add one</a></div>
     }
 </div>

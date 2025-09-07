@@ -68,7 +68,7 @@ export class ExpenseAdd implements OnInit {
                 this.router.navigate(['/expenses']);
             },
             error: (err) => {
-                console.error(err)
+                console.error(err);
                 alert('Failed to add expense. Please try again.');
                 this.isSubmitting = false;
             },

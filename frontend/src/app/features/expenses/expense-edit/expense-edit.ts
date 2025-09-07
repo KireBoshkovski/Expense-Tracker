@@ -36,7 +36,7 @@ export class ExpenseEdit implements OnInit {
         switchMap((params) => {
             const id = params.get('id');
             return id ? this.expenseService.getExpenseById(id) : of(undefined);
-        })
+        }),
     );
 
     ngOnInit(): void {

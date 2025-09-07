@@ -24,7 +24,7 @@ export class ExpenseService {
     addExpense(expense: Expense): Observable<Expense> {
         return this.http.post<Expense>(
             `${this.config.apiBackend}/expenses`,
-            expense
+            expense,
         );
     }
 
@@ -33,7 +33,7 @@ export class ExpenseService {
 
         return this.http.put<Expense>(
             `${this.config.apiBackend}/expenses/${expense._id}`,
-            { expense }
+            { expense },
         );
     }
 

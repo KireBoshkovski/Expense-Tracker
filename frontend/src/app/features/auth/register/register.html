@@ -14,10 +14,11 @@
         <button type="submit" [disabled]="form.invalid">Register</button>
     </form>
 
-    @if(errorMessage) {
-    <div class="error">{{ errorMessage }}</div>
-    } @if (successMessage) {
-    <div class="success">{{ successMessage }}</div>
+    @if (errorMessage) {
+        <div class="error">{{ errorMessage }}</div>
+    }
+    @if (successMessage) {
+        <div class="success">{{ successMessage }}</div>
     }
 
     <a routerLink="/login">Already have an account? Login</a>

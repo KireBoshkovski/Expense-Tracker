@@ -33,7 +33,7 @@ export const updateExpense = async (req: AuthRequest, res: Response) => {
     const expense = await Expense.findOneAndUpdate(
       { _id: id, user: userId },
       { title, amount, category },
-      { new: true }
+      { new: true },
     );
 
     if (!expense) {

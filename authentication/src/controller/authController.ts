@@ -54,7 +54,7 @@ export const RefreshToken = async (req: Request, res: Response) => {
       return res.status(403).json({ error: "Invalid refresh token" });
     }
     const newAccessToken = generateAccessToken(
-      (user._id as Types.ObjectId).toString()
+      (user._id as Types.ObjectId).toString(),
     );
     res.json({ accessToken: newAccessToken });
   } catch (error) {

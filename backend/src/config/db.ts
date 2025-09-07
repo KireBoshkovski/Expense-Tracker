@@ -4,7 +4,7 @@ const connectDB = async () => {
   try {
     await mongoose.connect(
       process.env.MONGO_URI ||
-        "mongodb://root:example@localhost:27017/test?authSource=admin"
+        "mongodb://root:example@localhost:27017/test?authSource=admin",
     );
     console.log("MongoDB connected");
   } catch (error) {

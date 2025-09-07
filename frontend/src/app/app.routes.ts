@@ -12,5 +12,9 @@ export const routes: Routes = [
     { path: 'register', component: Register },
     { path: 'expenses', component: ExpenseList, canActivate: [AuthGuard] },
     { path: 'expenses/add', component: ExpenseAdd, canActivate: [AuthGuard] },
-    { path: 'expenses/edit/:id', component: ExpenseEdit, canActivate: [AuthGuard] }
+    {
+        path: 'expenses/edit/:id',
+        component: ExpenseEdit,
+        canActivate: [AuthGuard],
+    },
 ];

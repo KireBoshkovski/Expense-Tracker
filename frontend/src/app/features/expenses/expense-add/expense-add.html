@@ -19,9 +19,11 @@
                 placeholder="Enter expense title"
                 autocomplete="off"
             />
-            @if (expenseForm.get('title')?.invalid &&
-            expenseForm.get('title')?.touched) {
-            <div class="error">Title is required</div>
+            @if (
+                expenseForm.get("title")?.invalid &&
+                expenseForm.get("title")?.touched
+            ) {
+                <div class="error">Title is required</div>
             }
         </div>
 
@@ -37,13 +39,18 @@
                 placeholder="0.00"
                 autocomplete="off"
             />
-            @if (expenseForm.get('amount')?.invalid &&
-            expenseForm.get('amount')?.touched) {
-            <div class="error">
-                @if (expenseForm.get('amount')?.errors?.['required']) { Amount
-                is required } @if (expenseForm.get('amount')?.errors?.['min']) {
-                Amount must be greater than or equal to 0 }
-            </div>
+            @if (
+                expenseForm.get("amount")?.invalid &&
+                expenseForm.get("amount")?.touched
+            ) {
+                <div class="error">
+                    @if (expenseForm.get("amount")?.errors?.["required"]) {
+                        Amount is required
+                    }
+                    @if (expenseForm.get("amount")?.errors?.["min"]) {
+                        Amount must be greater than or equal to 0
+                    }
+                </div>
             }
         </div>
 
@@ -62,9 +69,11 @@
                 <option value="Personal Care">Personal Care</option>
                 <option value="Miscellaneous">Miscellaneous</option>
             </select>
-            @if (expenseForm.get('category')?.invalid &&
-            expenseForm.get('category')?.touched) {
-            <div class="error">Category is required</div>
+            @if (
+                expenseForm.get("category")?.invalid &&
+                expenseForm.get("category")?.touched
+            ) {
+                <div class="error">Category is required</div>
             }
         </div>
 
@@ -77,9 +86,11 @@
                 required
                 [max]="getCurrentDate()"
             />
-            @if (expenseForm.get('date')?.invalid &&
-            expenseForm.get('date')?.touched) {
-            <div class="error">Date is required</div>
+            @if (
+                expenseForm.get("date")?.invalid &&
+                expenseForm.get("date")?.touched
+            ) {
+                <div class="error">Date is required</div>
             }
         </div>
 
@@ -90,8 +101,11 @@
                 class="btn-primary"
             >
                 @if (isSubmitting) {
-                <span class="spinner"></span>
-                Adding... } @else { Add Expense }
+                    <span class="spinner"></span>
+                    Adding...
+                } @else {
+                    Add Expense
+                }
             </button>
             <button type="button" routerLink="/expenses" class="btn-secondary">
                 Cancel

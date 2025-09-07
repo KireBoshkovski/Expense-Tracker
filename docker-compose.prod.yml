@@ -41,7 +41,7 @@ services:
       API_BACKEND: ${BACKEND_API_URL}
       API_AUTH: ${AUTH_API_URL}
     ports:
-      - 4200:80 
+      - 4200:80
     depends_on:
       - backend
       - authentication
