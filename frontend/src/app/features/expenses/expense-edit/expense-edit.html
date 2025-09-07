@@ -1,0 +1,60 @@
+<navbar></navbar>
+@if (expense$ | async; as expense) {
+<form [formGroup]="expenseForm" (ngSubmit)="onSave(expenseForm.value)">
+    <h2>Edit Expense</h2>
+
+    <div class="form-field">
+        <label for="title">Title:</label>
+        <input id="title" type="text" formControlName="title" required />
+        @if (expenseForm.get('title')?.invalid &&
+        expenseForm.get('title')?.touched) {
+        <div class="error">Title is required</div>
+        }
+    </div>
+
+    <div class="form-field">
+        <label for="amount">Amount:</label>
+        <input
+            id="amount"
+            type="number"
+            formControlName="amount"
+            required
+            min="0"
+            step="0.01"
+        />
+        @if (expenseForm.get('amount')?.invalid &&
+        expenseForm.get('amount')?.touched) {
+        <div class="error">
+            @if (expenseForm.get('amount')?.errors?.['required']) { Amount is
+            required } @if (expenseForm.get('amount')?.errors?.['min']) { Amount
+            must be greater than or equal to 0 }
+        </div>
+        }
+    </div>
+
+    <div class="form-field">
+        <label for="category">Category:</label>
+        <input id="category" type="text" formControlName="category" required />
+        @if (expenseForm.get('category')?.invalid &&
+        expenseForm.get('category')?.touched) {
+        <div class="error">Category is required</div>
+        }
+    </div>
+
+    <div class="form-field">
+        <label for="date">Date:</label>
+        <input id="date" type="date" formControlName="date" required />
+        @if (expenseForm.get('date')?.invalid &&
+        expenseForm.get('date')?.touched) {
+        <div class="error">Date is required</div>
+        }
+    </div>
+
+    <button type="submit" [disabled]="!expenseForm.valid">Save</button>
+    <button type="button" (click)="router.navigate(['/expenses'])">
+        Cancel
+    </button>
+</form>
+} @else {
+<p>Loading expense...</p>
+}

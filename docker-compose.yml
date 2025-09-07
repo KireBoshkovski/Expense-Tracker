@@ -1,0 +1,57 @@
+services:
+  mongo:
+    image: mongo
+    restart: unless-stopped
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
+      MONGO_INITDB_DATABASE: ${MONGO_INITDB_DATABASE}
+    volumes:
+      - mongo-data:/data/db
+    networks:
+      - network
+
+  authentication:
+    build: ./authentication
+    restart: unless-stopped
+    environment:
+      MONGO_URI: ${AUTH_MONGO_URI}
+      JWT_SECRET: ${JWT_SECRET}
+      REFRESH_SECRET: ${REFRESH_SECRET}
+    depends_on:
+      - mongo
+    networks:
+      - network
+
+  backend:
+    build: ./backend
+    restart: unless-stopped
+    environment:
+      MONGO_URI: ${BACKEND_MONGO_URI}
+      JWT_SECRET: ${JWT_SECRET}
+    depends_on:
+      - authentication
+    networks:
+      - network
+
+  frontend:
+    build: ./frontend
+    restart: unless-stopped
+    environment:
+      API_BACKEND: ${BACKEND_API_URL}
+      API_AUTH: ${AUTH_API_URL}
+    ports:
+      - 4200:80 # maps 4200 on localhost to container port 80 from frontend service 
+    depends_on:
+      - backend
+      - authentication
+    networks:
+      - network
+
+volumes:
+  mongo-data:
+    driver: local
+
+networks:
+  network:
+    driver: bridge

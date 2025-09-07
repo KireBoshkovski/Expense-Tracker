@@ -1,0 +1,23 @@
+<nav class="navbar">
+    <div class="navbar-brand">
+        <h2>Expense Tracker</h2>
+    </div>
+
+    <div class="navbar-menu">
+        <a routerLink="/expenses" routerLinkActive="active" class="nav-link">
+            Expenses
+        </a>
+
+        <a
+            routerLink="/expenses/add"
+            routerLinkActive="active"
+            class="nav-link"
+        >
+            Add Expense
+        </a>
+
+        <button class="logout-btn" (click)="onLogout()" type="button">
+            Logout
+        </button>
+    </div>
+</nav>
