@@ -16,24 +16,22 @@ export class ExpenseService {
     }
 
     getExpenseById(id: string): Observable<Expense> {
-        return this.http
-            .get<Expense>(`${this.config.apiBackend}/expenses/${id}`)
-            .pipe(tap((response) => console.log(response)));
+        return this.http.get<Expense>(
+            `${this.config.apiBackend}/expenses/${id}`
+        );
     }
 
     addExpense(expense: Expense): Observable<Expense> {
         return this.http.post<Expense>(
             `${this.config.apiBackend}/expenses`,
-            expense,
+            expense
         );
     }
 
     updateExpense(expense: Expense): Observable<Expense> {
-        console.log(expense);
-
         return this.http.put<Expense>(
             `${this.config.apiBackend}/expenses/${expense._id}`,
-            { expense },
+            { expense }
         );
     }
 

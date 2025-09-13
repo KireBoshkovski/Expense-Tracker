@@ -28,7 +28,6 @@ export class Register {
         if (this.form.invalid) return;
 
         const { username, email, password } = this.form.value;
-        console.log(username, email, password);
         this.authService.register(username!, email!, password!).subscribe({
             next: () => {
                 this.successMessage = 'Registration successful! Please log in.';

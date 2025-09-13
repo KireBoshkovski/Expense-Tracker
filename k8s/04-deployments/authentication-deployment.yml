@@ -4,7 +4,7 @@ metadata:
   name: auth
   namespace: main
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: auth
@@ -17,7 +17,7 @@ spec:
         - name: auth
           image: kireboshkovski/authentication:latest
           ports:
-            - containerPort: 3001
+            - containerPort: 4000
           env:
             - name: MONGO_URI
               valueFrom:
