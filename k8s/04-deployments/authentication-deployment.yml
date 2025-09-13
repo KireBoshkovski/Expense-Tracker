@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: authentication
+  name: auth
   namespace: main
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
-      app: authentication
+      app: auth
   template:
     metadata:
       labels:
-        app: authentication
+        app: auth
     spec:
       containers:
-        - name: authentication
+        - name: auth
           image: kireboshkovski/authentication:latest
           ports:
             - containerPort: 3001

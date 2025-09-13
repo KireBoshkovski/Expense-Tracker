@@ -1,11 +1,11 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: authentication-service
+  name: auth
   namespace: main
 spec:
   selector:
-    app: authentication
+    app: auth
   ports:
-    - port: 3001
-      targetPort: 3001
+    - port: 4000
+      targetPort: 4000

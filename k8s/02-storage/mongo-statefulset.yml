@@ -4,7 +4,7 @@ metadata:
   name: mongo
   namespace: main
 spec:
-  serviceName: mongo-service
+  serviceName: mongo
   replicas: 1
   selector:
     matchLabels:
