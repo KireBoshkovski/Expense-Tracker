@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: authentication
+  namespace: main
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: authentication
+  template:
+    metadata:
+      labels:
+        app: authentication
+    spec:
+      containers:
+        - name: authentication
+          image: kireboshkovski/authentication:latest
+          ports:
+            - containerPort: 3001
+          env:
+            - name: MONGO_URI
+              valueFrom:
+                configMapKeyRef:
+                  name: app-config
+                  key: AUTH_MONGO_URI
+            - name: JWT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: app-secrets
+                  key: JWT_SECRET
+            - name: REFRESH_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: app-secrets
+                  key: REFRESH_SECRET
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "100m"
+            limits:
+              memory: "256Mi"
+              cpu: "200m"
