@@ -3,9 +3,11 @@ import { inject } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { catchError, switchMap, throwError } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 export const authInterceptor: HttpInterceptorFn = (req, next) => {
     const authService = inject(AuthService);
+    const router = inject(Router);
 
     const token = authService.getAccessToken();
 
@@ -28,9 +30,14 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
                         });
                         return next(newReq);
                     }),
+                    catchError((refreshError) => {
+                        authService.logout();
+                        router.navigate(['/login']);
+                        return throwError(() => refreshError);
+                    })
                 );
             }
             return throwError(() => err);
-        }),
+        })
     );
 };
